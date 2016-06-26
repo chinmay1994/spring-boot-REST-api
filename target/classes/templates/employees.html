@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script >
+$(document).ready(function(){
+	$("button").click(function(){
+		var	str = "";
+		str = "http://localhost:8080/employees/" + $(this).parent().parent().find("td:first").text();
+		window.location.href = str;
+	});
+});
+</script>
+<style>
+table {
+color: #333; /* Lighten up font color */
+font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+width: 640px;
+border-collapse:
+collapse; 
+border-spacing: 0;
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+background: #D3D3D3; /* Light grey background */
+font-weight: bold; /* Make sure they're bold */
+}
+
+td {
+background: #FAFAFA; /* Lighter grey background */
+text-align: center; /* Center our text */
+}
+
+</style>
+</head> 
+<body>
+<h2>List of employees in organisation</h2>
+<table border="1" id="employeeTable">
+	<tr>
+	<th>Id</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Role</th>
+	<th>Manage</th>
+	</tr>
+    <tr th:each="item : ${list}">
+    	<td th:text="${item.employee_Id}" ></td>
+        <td th:text="${item.firstName}" ></td>
+        <td th:text="${item.lastName}"></td>
+        <td th:text="${item.role}"></td>
+        <td> <button > View profile</button></td>
+    </tr>
+</table>
+<h3>To add a new record, <a href="/employee">click here</a>.</h3>
+</body>
+</html>
