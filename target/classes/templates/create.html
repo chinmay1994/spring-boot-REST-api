@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <style>
-input[type=text], select {
+.inp, select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -13,7 +13,7 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #838383;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -28,10 +28,13 @@ input[type=submit]:hover {
 
 </style>
 </head>
+<meta http-equiv="Cache-Control" content="no-store" />
 <body>
+<br></br><br></br><br></br>
+<h3 style="text-align:center"> Insert employee data </h3>
 <form method="POST" action="#" th:action="@{/employee}" th:object="${employee}">
-First Name:<input type="text" th:field="*{firstName}"></input><br></br>
-Last Name: <input type="text" th:field="*{lastName}"></input><br></br>
+First Name:<input data-validation="required" data-validation-regexp="^([a-zA-Z]+)$"  th:field="*{firstName}" class="inp"></input><br></br>
+Last Name: <input data-validation="required" data-validation-regexp="^([a-zA-Z]+)$"  th:field="*{lastName}" class="inp"></input><br></br>
 Role:
 <select th:field="*{role}">
   <option value="Developer" >Developer</option>
@@ -39,7 +42,19 @@ Role:
   <option value="Manager" >Manager</option>
   <option value="HR" >HR</option>
 </select><br></br>
-<input type="submit" value="Add record"></input><br></br>
+<input type="submit" value="Add record" onclick="success()"></input><br></br>
 </form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.23/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+    lang: 'en'
+  });
+</script>
+<script >
+	function success(){
+		alert("Employee added successfully!");
+	}
+</script>
 </body>
 </html>

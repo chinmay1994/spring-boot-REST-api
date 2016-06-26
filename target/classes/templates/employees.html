@@ -12,30 +12,42 @@ $(document).ready(function(){
 </script>
 <style>
 table {
-color: #333; /* Lighten up font color */
-font-family: Helvetica, Arial, sans-serif; /* Nicer font */
-width: 640px;
+width : 100%;
+color: #333; 
+font-family: Helvetica, Arial, sans-serif; 
 border-collapse:
 collapse; 
 border-spacing: 0;
 }
 
-td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+td, th { border: 1px solid #CCC; height: 30px; } 
 
 th {
-background: #D3D3D3; /* Light grey background */
-font-weight: bold; /* Make sure they're bold */
+background: #D3D3D3; 
+font-weight: bold; 
 }
 
 td {
-background: #FAFAFA; /* Lighter grey background */
-text-align: center; /* Center our text */
+background: #FAFAFA; 
+text-align: center; 
 }
-
+button {
+    background-color: #838383;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
 </style>
 </head> 
+<meta http-equiv="Cache-Control" content="no-store" />
 <body>
-<h2>List of employees in organisation</h2>
+<h2 style="text-align:center">List of employees in organization</h2>
 <table border="1" id="employeeTable">
 	<tr>
 	<th>Id</th>
@@ -52,6 +64,8 @@ text-align: center; /* Center our text */
         <td> <button > View profile</button></td>
     </tr>
 </table>
-<h3>To add a new record, <a href="/employee">click here</a>.</h3>
+<h3 style="text-align:center">To add a new record, <a href="/employee">click here</a>.</h3>
+<br></br>
+<h3 style="text-align:center">To get back to homepage, <a href="/">click here</a>.</h3>
 </body>
 </html>

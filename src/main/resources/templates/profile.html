@@ -1,19 +1,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script >
-$(document).ready(function(){
-	$("#delete_button").click(function(){
-		$.ajax({
-			url: "http://localhost:8080/employees",
-			type: "DELETE"
-		});
-	});
-}); 
-</script>
+
 <style>
-input[type=text], select {
-    width: 50%;
+.inp, select {
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -23,8 +14,8 @@ input[type=text], select {
 }
 
 input[type=submit] {
-    width: 50%;
-    background-color: #4CAF50;
+    width: 100%;
+     background-color: #838383;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -39,11 +30,12 @@ input[type=submit]:hover {
 
 </style>
 </head> 
+<meta http-equiv="Cache-Control" content="no-store" />
 <body>
 <form method="POST" action= "/employees" id="update_form" th:object="${employee}">
-EmployeeID: <input type="text" th:field="*{employee_Id}" readonly="readonly"></input><br></br>
-First Name:<input type="text" th:field="*{firstName}"></input><br></br>
-Last Name: <input type="text" th:field="*{lastName}"></input><br></br>
+EmployeeID: <input th:field="*{employee_Id}" readonly="readonly" class="inp"></input><br></br>
+First Name:<input data-validation="custom" data-validation-regexp="^([a-zA-Z]+)$" th:field="*{firstName}" class="inp"></input><br></br>
+Last Name: <input data-validation="custom" data-validation-regexp="^([a-zA-Z]+)$" th:field="*{lastName}" class="inp"></input><br></br>
 Role:
 <select th:field="*{role}">
   <option value="Developer" >Developer</option>
@@ -54,5 +46,12 @@ Role:
 <input type="submit" name="action" value="update"/><br></br>
 <input type="submit" name="action" value="delete"/><br></br>
 </form>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.23/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+    lang: 'en'
+  });
+</script>
+
 </body>
 </html>
