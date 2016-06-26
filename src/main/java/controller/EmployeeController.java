@@ -40,7 +40,7 @@ public class EmployeeController {
 		model.addAttribute("employee", employee);
 		Employee temp = new Employee(employee.getFirstName(),employee.getLastName(),employee.getRole());
 		mongoOperations.save(temp);
-		return "index";
+		return "redirect:";
 	}
 	
 	@RequestMapping(value="/employee",method=RequestMethod.GET)
